@@ -79,11 +79,11 @@
   function handleLogin(e) {
     e.preventDefault();
     // Redirect based on role (wire to backend later)
-    if (currentRole === 'admin') {
-      alert('تسجيل دخول المشرف — يتم التحقق من البيانات...');
-    } else {
-      window.location.href = 'my-reports.html'; // placeholder
-    }
+if (currentRole === 'admin') {
+  window.location.href = 'admin-dashboard.html';
+} else {
+  window.location.href = 'my-reports.html';
+}
   }
 </script>
 </body>

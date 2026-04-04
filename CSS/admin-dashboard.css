@@ -1,0 +1,99 @@
+/* =====================
+   Admin Dashboard Page
+===================== */
+.page {
+  padding: 2.5rem 0 4rem;
+  flex: 1; /* ensures footer stays at bottom */
+}
+
+.page-title {
+  font-family: 'Cairo', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--green);
+  margin-bottom: 2rem;
+}
+
+/* =====================
+   Stats Grid
+===================== */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(13, 52, 33, 0.1);
+}
+
+.card i {
+  font-size: 1.75rem;
+  color: var(--green);
+  margin-bottom: 0.85rem;
+  display: block;
+}
+
+.card h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+}
+
+.card p {
+  font-family: 'Cairo', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--green);
+  margin: 0;
+}
+
+/* =====================
+   Action Button
+===================== */
+.page .btn-green {
+  margin-top: 2rem;
+  display: inline-block;
+}
+
+/* =====================
+   Responsive
+===================== */
+@media (max-width: 900px) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =====================
+   Nav admin label
+===================== */
+.nav-admin-label {
+    color: rgba(239, 237, 212, 0.75);
+    font-size: 0.92rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+/* Page action button spacing */
+.page-action {
+    margin-top: 2rem;
+}

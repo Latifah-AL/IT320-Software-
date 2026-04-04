@@ -1,0 +1,166 @@
+/* =====================
+   Manage Reports Page
+===================== */
+.page {
+  padding: 2.5rem 0 4rem;
+  flex: 1; /* ensures footer stays at bottom */
+}
+
+.page-title {
+  font-family: 'Cairo', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--green);
+  margin-bottom: 1.75rem;
+}
+
+/* =====================
+   Report Card
+===================== */
+.report-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  transition: box-shadow 0.2s;
+}
+
+.report-card:hover {
+  box-shadow: 0 4px 16px rgba(13, 52, 33, 0.08);
+}
+
+.report-info h3 {
+  font-family: 'Cairo', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+}
+
+.report-info p {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+/* =====================
+   Status Badges
+===================== */
+.status {
+  display: inline-block;
+  padding: 0.2rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.status.pending {
+  background: #FFF3E0;
+  color: #E65100;
+}
+
+.status.review {
+  background: #E3F2FD;
+  color: #1565C0;
+}
+
+.status.resolved {
+  background: #E8F5E9;
+  color: #2E7D32;
+}
+
+.status.rejected {
+  background: #FFEBEE;
+  color: #C62828;
+}
+
+/* =====================
+   Action Buttons
+===================== */
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.btn-view {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: var(--green);
+  color: var(--sand);
+  padding: 0.45rem 1rem;
+  border-radius: 6px;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  transition: background 0.2s;
+  text-decoration: none;
+}
+
+.btn-view:hover {
+  background: var(--green-mid);
+  color: var(--sand);
+}
+
+.btn-approve {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: #E8F5E9;
+  color: #2E7D32;
+  padding: 0.45rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-approve:hover {
+  background: #2E7D32;
+  color: #fff;
+}
+
+.btn-reject {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: #FFEBEE;
+  color: #C62828;
+  padding: 0.45rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-reject:hover {
+  background: #C62828;
+  color: #fff;
+}
+
+/* =====================
+   Responsive
+===================== */
+@media (max-width: 600px) {
+  .report-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}

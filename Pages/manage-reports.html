@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>عينك — إدارة البلاغات</title>
+    <link rel="stylesheet" href="../CSS/main.css" />
+    <link rel="stylesheet" href="../CSS/manage-reports.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&family=Cairo:wght@700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+ 
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-inner">
+            <a href="admin-dashboard.html" class="logo">
+                <img src="../Images/logo.png" alt="عينك" />
+            </a>
+            <ul class="nav-links">
+                <li><a href="admin-dashboard.html">لوحة التحكم</a></li>
+                <li><a href="manage-reports.html" class="active">إدارة البلاغات</a></li>
+            </ul>
+            <div class="nav-auth">
+                <span class="nav-admin-label">
+                    <i class="fa-solid fa-user-shield"></i> المشرف
+                </span>
+                <a href="index.html" class="btn-green">
+                    <i class="fa-solid fa-right-from-bracket"></i> خروج
+                </a>
+            </div>
+            <button class="burger" id="burger">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        <div class="mobile-nav" id="mobileNav">
+            <a href="admin-dashboard.html">لوحة التحكم</a>
+            <a href="manage-reports.html">إدارة البلاغات</a>
+            <a href="index.html" class="btn-logout-mobile">خروج</a>
+        </div>
+    </nav>
+ 
+    <!-- PAGE -->
+    <main class="page">
+        <div class="container">
+ 
+            <h1 class="page-title">إدارة البلاغات</h1>
+ 
+            <!-- REPORT CARD -->
+            <div class="report-card">
+                <div class="report-info">
+                    <h3>بلاغ رقم: R001</h3>
+                    <p>وقوف سيارة في مكان ممنوع</p>
+                    <span class="status pending">قيد الانتظار</span>
+                </div>
+                <div class="actions">
+                    <a href="admin-report-details.html" class="btn-view">
+                        <i class="fa-solid fa-eye"></i> عرض
+                    </a>
+                    <button class="btn-approve">
+                        <i class="fa-solid fa-check"></i> قبول
+                    </button>
+                    <button class="btn-reject">
+                        <i class="fa-solid fa-xmark"></i> رفض
+                    </button>
+                </div>
+            </div>
+ 
+            <!-- REPORT CARD -->
+            <div class="report-card">
+                <div class="report-info">
+                    <h3>بلاغ رقم: R002</h3>
+                    <p>إشغال رصيف</p>
+                    <span class="status review">قيد المراجعة</span>
+                </div>
+                <div class="actions">
+                    <a href="admin-report-details.html" class="btn-view">
+                        <i class="fa-solid fa-eye"></i> عرض
+                    </a>
+                    <button class="btn-approve">
+                        <i class="fa-solid fa-check"></i> قبول
+                    </button>
+                    <button class="btn-reject">
+                        <i class="fa-solid fa-xmark"></i> رفض
+                    </button>
+                </div>
+            </div>
+ 
+            <!-- REPORT CARD -->
+            <div class="report-card">
+                <div class="report-info">
+                    <h3>بلاغ رقم: R003</h3>
+                    <p>سد مخرج طوارئ</p>
+                    <span class="status resolved">تمت المعالجة</span>
+                </div>
+                <div class="actions">
+                    <a href="admin-report-details.html" class="btn-view">
+                        <i class="fa-solid fa-eye"></i> عرض
+                    </a>
+                    <button class="btn-approve" disabled>
+                        <i class="fa-solid fa-check"></i> قبول
+                    </button>
+                    <button class="btn-reject" disabled>
+                        <i class="fa-solid fa-xmark"></i> رفض
+                    </button>
+                </div>
+            </div>
+ 
+        </div>
+    </main>
+ 
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <img src="../Images/logo.png" alt="عينك" />
+                <p>منصة مجتمعية للإبلاغ عن مخالفات المدن في المملكة العربية السعودية</p>
+            </div>
+            <div class="footer-links">
+                <h5>روابط</h5>
+                <a href="admin-dashboard.html">لوحة التحكم</a>
+                <a href="manage-reports.html">إدارة البلاغات</a>
+            </div>
+            <div class="footer-links">
+                <h5>تواصل</h5>
+                <span><i class="fa-solid fa-envelope"></i> support@aynek.sa</span>
+                <span><i class="fa-solid fa-location-dot"></i> المملكة العربية السعودية</span>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة &copy; 2025 — عينك</p>
+        </div>
+    </footer>
+ 
+    <script src="../JS/manage-reports.js"></script>
+    <script>
+        document.getElementById('burger').addEventListener('click', function () {
+            document.getElementById('mobileNav').classList.toggle('open');
+        });
+    </script>
+ 
+</body>
+</html>

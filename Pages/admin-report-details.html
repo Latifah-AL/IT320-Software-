@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>عينك — تفاصيل البلاغ</title>
+    <link rel="stylesheet" href="../CSS/main.css" />
+    <link rel="stylesheet" href="../CSS/admin-report-details.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&family=Cairo:wght@700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+ 
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-inner">
+            <a href="admin-dashboard.html" class="logo">
+                <img src="../Images/logo.png" alt="عينك" />
+            </a>
+            <ul class="nav-links">
+                <li><a href="admin-dashboard.html">لوحة التحكم</a></li>
+                <li><a href="manage-reports.html" class="active">إدارة البلاغات</a></li>
+            </ul>
+            <div class="nav-auth">
+                <span class="nav-admin-label">
+                    <i class="fa-solid fa-user-shield"></i> المشرف
+                </span>
+                <a href="index.html" class="btn-green">
+                    <i class="fa-solid fa-right-from-bracket"></i> خروج
+                </a>
+            </div>
+            <button class="burger" id="burger">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        <div class="mobile-nav" id="mobileNav">
+            <a href="admin-dashboard.html">لوحة التحكم</a>
+            <a href="manage-reports.html">إدارة البلاغات</a>
+            <a href="index.html" class="btn-logout-mobile">خروج</a>
+        </div>
+    </nav>
+ 
+    <!-- PAGE -->
+    <main class="page">
+        <div class="container">
+ 
+            <!-- Page Header -->
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">تفاصيل البلاغ</h1>
+                    <p class="report-id-label">رقم البلاغ: <span>R001</span></p>
+                </div>
+                <a href="manage-reports.html" class="btn-back">
+                    <i class="fa-solid fa-arrow-right"></i> العودة لإدارة البلاغات
+                </a>
+            </div>
+ 
+            <!-- Details Card -->
+            <div class="details-card">
+ 
+                <!-- Info Grid -->
+                <div class="detail-info-grid">
+                    <div class="detail-info-item">
+                        <span class="detail-label">
+                            <i class="fa-solid fa-hashtag"></i> رقم البلاغ
+                        </span>
+                        <span class="detail-value mono">R001</span>
+                    </div>
+                    <div class="detail-info-item">
+                        <span class="detail-label">
+                            <i class="fa-solid fa-tag"></i> نوع المخالفة
+                        </span>
+                        <span class="detail-value">وقوف مخالف</span>
+                    </div>
+                    <div class="detail-info-item">
+                        <span class="detail-label">
+                            <i class="fa-solid fa-location-dot"></i> الموقع
+                        </span>
+                        <span class="detail-value">حي النزهة، الرياض</span>
+                    </div>
+                    <div class="detail-info-item">
+                        <span class="detail-label">
+                            <i class="fa-solid fa-calendar"></i> التاريخ
+                        </span>
+                        <span class="detail-value">12 يناير 2025</span>
+                    </div>
+                    <div class="detail-info-item">
+                        <span class="detail-label">
+                            <i class="fa-solid fa-circle-info"></i> الحالة
+                        </span>
+                        <span class="detail-value">
+                            <span class="status pending">قيد الانتظار</span>
+                        </span>
+                    </div>
+                    <div class="detail-info-item">
+                        <span class="detail-label">
+                            <i class="fa-solid fa-user"></i> المُبلِّغ
+                        </span>
+                        <span class="detail-value">لطيفة العمري</span>
+                    </div>
+                </div>
+ 
+                <!-- Description -->
+                <div class="detail-desc">
+                    <span class="detail-label">
+                        <i class="fa-solid fa-align-right"></i> وصف المخالفة
+                    </span>
+                    <p>سيارة متوقفة في مكان غير مسموح به أمام مدخل المبنى وتعيق حركة الدخول والخروج للسكان والزوار.</p>
+                </div>
+ 
+                <!-- Image -->
+                <div class="detail-img-wrapper">
+                    <span class="detail-label">
+                        <i class="fa-solid fa-camera"></i> صورة المخالفة
+                    </span>
+                    <div class="img-placeholder-admin">
+                        <i class="fa-solid fa-image"></i>
+                        <span>لا توجد صورة مرفقة</span>
+                    </div>
+                </div>
+ 
+                <!-- Actions -->
+                <div class="actions">
+                    <button class="btn-approve" onclick="handleAction('approve')">
+                        <i class="fa-solid fa-check"></i> قبول البلاغ
+                    </button>
+                    <button class="btn-reject" onclick="handleAction('reject')">
+                        <i class="fa-solid fa-xmark"></i> رفض البلاغ
+                    </button>
+                </div>
+ 
+            </div>
+        </div>
+    </main>
+ 
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <img src="../Images/logo.png" alt="عينك" />
+                <p>منصة مجتمعية للإبلاغ عن مخالفات المدن في المملكة العربية السعودية</p>
+            </div>
+            <div class="footer-links">
+                <h5>روابط</h5>
+                <a href="admin-dashboard.html">لوحة التحكم</a>
+                <a href="manage-reports.html">إدارة البلاغات</a>
+            </div>
+            <div class="footer-links">
+                <h5>تواصل</h5>
+                <span><i class="fa-solid fa-envelope"></i> support@aynek.sa</span>
+                <span><i class="fa-solid fa-location-dot"></i> المملكة العربية السعودية</span>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة &copy; 2025 — عينك</p>
+        </div>
+    </footer>
+ 
+    <script src="../JS/admin-report-details.js"></script>
+    <script>
+        document.getElementById('burger').addEventListener('click', function () {
+            document.getElementById('mobileNav').classList.toggle('open');
+        });
+ 
+        function handleAction(type) {
+            if (type === 'approve') {
+                alert('تم قبول البلاغ بنجاح');
+            } else {
+                alert('تم رفض البلاغ');
+            }
+            window.location.href = 'manage-reports.html';
+        }
+    </script>
+ 
+</body>
+</html>
