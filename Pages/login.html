@@ -70,7 +70,7 @@
 </main>
 
 <footer>&copy; 2026 عينك — جامعة الملك سعود · IT 320</footer>
-//all in javascript since both pages share the same validation logic and we want to keep them consistent without duplication and since there is no database in this phase so i didnt use php
+
 <script>
 let currentRole = 'user';
 
@@ -161,7 +161,7 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
     setTimeout(() => {
       window.location.href = currentRole === 'admin'
         ? '../Pages/admin-dashboard.html'
-        : '../Pages/my-reports.html';
+        : '../Pages/profile.html';
     }, 1500);
   }, 700);
 });

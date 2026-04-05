@@ -108,10 +108,7 @@
         <span class="field-msg" id="confirm-msg"></span>
       </div>
 
-      <div class="terms-row">
-        <input type="checkbox" id="terms"/>
-        <label for="terms">أوافق على <a href="#">شروط الاستخدام</a> و<a href="#">سياسة الخصوصية</a></label>
-      </div>
+    
       <span class="terms-err" id="terms-msg"></span>
 
       <button type="submit" class="btn-submit" id="sub-btn">إنشاء الحساب</button>
@@ -125,7 +122,7 @@
 <footer>&copy; 2026 عينك — جامعة الملك سعود · IT 320</footer>
 
 <script>
-/* ── utility ──  all in javascript since both pages share the same validation logic and we want to keep them consistent without duplication and since there is no database in this phase so i didnt use php*/
+
 function field(id, state, msg) {
   const inp = document.getElementById(id);
   const m   = document.getElementById(id + '-msg');
@@ -160,7 +157,7 @@ function vFname() {
   const v = document.getElementById('fname').value.trim();
   if (!v)             return field('fname','err','الاسم الأول مطلوب'), false;
   if (v.length < 2)   return field('fname','err','يجب أن يكون حرفين على الأقل'), false;
-  if (/\d/.test(v))   return field('fname','err','لا يجوز أن يحتوي الاسم على أرقام'), false;
+  if (/\d/.test(v))   return field('fname','err','لا يصلح أن يحتوي الاسم على أرقام'), false;
   field('fname','ok',''); return true;
 }
 
@@ -168,7 +165,7 @@ function vLname() {
   const v = document.getElementById('lname').value.trim();
   if (!v)             return field('lname','err','اسم العائلة مطلوب'), false;
   if (v.length < 2)   return field('lname','err','يجب أن يكون حرفين على الأقل'), false;
-  if (/\d/.test(v))   return field('lname','err','لا يجوز أن يحتوي الاسم على أرقام'), false;
+  if (/\d/.test(v))   return field('lname','err','لا يصلح أن يحتوي الاسم على أرقام'), false;
   field('lname','ok',''); return true;
 }
 
@@ -268,19 +265,14 @@ document.getElementById('password').addEventListener('input', () => { vPassword(
 document.getElementById('password').addEventListener('blur', vPassword);
 document.getElementById('confirm').addEventListener('input', vConfirm);
 document.getElementById('confirm').addEventListener('blur',  vConfirm);
-document.getElementById('terms').addEventListener('change', () => {
-  document.getElementById('terms-msg').textContent = document.getElementById('terms').checked ? '' : 'يجب الموافقة على الشروط والأحكام';
-});
+
 
 /* ── submit ── */
 document.getElementById('signup-form').addEventListener('submit', function(e) {
   e.preventDefault();
   const results = [vFname(), vLname(), vUsername(), vEmail(), vPhone(), vPassword(), vConfirm()];
   const allOk   = results.every(Boolean);
-  const terms   = document.getElementById('terms').checked;
-  document.getElementById('terms-msg').textContent = terms ? '' : 'يجب الموافقة على الشروط والأحكام للمتابعة';
-
-  if (!allOk || !terms) {
+ if (!allOk)  {
     const first = document.querySelector('input.invalid');
     if (first) first.scrollIntoView({behavior:'smooth', block:'center'});
     return;
@@ -288,7 +280,7 @@ document.getElementById('signup-form').addEventListener('submit', function(e) {
   const btn = document.getElementById('sub-btn');
   btn.disabled = true; btn.textContent = 'جارٍ الإنشاء…';
   document.getElementById('success-banner').style.display = 'block';
-  setTimeout(() => window.location.href = '../Pages/my-reports.html', 2200);
+  setTimeout(() => window.location.href = '../Pages/profile.html', 2200);
 });
 </script>
 </body>
