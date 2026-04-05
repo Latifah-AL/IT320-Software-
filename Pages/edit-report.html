@@ -53,7 +53,7 @@
                 <div class="page-header">
                     <div>
                         <h1>تعديل البلاغ</h1>
-                        <p class="report-id-label">رقم البلاغ: <span id="reportIdLabel">RPT-001</span></p>
+                        <p class="report-id-label">رقم البلاغ: <span id="reportIdLabel"></span></p>
                     </div>
                     <a href="my-reports.html" class="btn-back">
                         <i class="fa-solid fa-arrow-right"></i> العودة للبلاغات
@@ -62,14 +62,14 @@
 
                 <!-- Form -->
                 <div class="form-wrapper">
-                    <form action="my-reports.html" method="get" id="editForm">
+                    <form id="editForm">
 
                         <!-- Title -->
                         <div class="form-group">
                             <label for="title">
                                 <i class="fa-solid fa-heading"></i> عنوان البلاغ
                             </label>
-                            <input type="text" id="title" name="title" value="وقوف مخالف أمام مدخل">
+                            <input type="text" id="title" name="title" >
                         </div>
 
                         <!-- Category -->
@@ -78,7 +78,7 @@
                                 <i class="fa-solid fa-tag"></i> نوع المخالفة
                             </label>
                             <select id="category" name="category">
-                                <option value="parking" selected>🚗 وقوف مخالف</option>
+                                <option value="parking">🚗 وقوف مخالف</option>
                                 <option value="sidewalk">🚶 إشغال رصيف المشاة</option>
                                 <option value="emergency">🚑 سد مخرج طوارئ</option>
                                 <option value="disabled">♿ مواقف ذوي الاحتياجات</option>
@@ -92,7 +92,7 @@
                             <label for="description">
                                 <i class="fa-solid fa-align-right"></i> وصف المخالفة
                             </label>
-                            <textarea id="description" name="description"ows="4">سيارة واقفة بشكل مخالف أمام مدخل المبنى وتعيق حركة الدخول والخروج</textarea>
+                            <textarea id="description" name="description" rows="4"></textarea>
                         </div>
 
                         <!-- Current Image -->
@@ -100,23 +100,22 @@
                             <label>
                                 <i class="fa-solid fa-camera"></i> صورة المخالفة
                             </label>
-                            <div class="current-image" id="currentImage">
-                                <img src="../Images/re1.jpeg" alt="وقوف مخالف أمام مدخل"/>
-                            </div>
+                            <div class="current-image" id="currentImage"></div>
                             <div class="upload-area" onclick="document.getElementById('imageInput').click()">
                                 <i class="fa-solid fa-cloud-arrow-up"></i>
                                 <p>اضغط لتغيير الصورة</p>
                                 <span>PNG, JPG حتى 5MB</span>
-                                <input type="file" id="imageInput" name="image" accept="image/*" hidden>
+                                <input type="file" id="imageInput" name="image" accept="image/*" hidden/>
                             </div>
                         </div>
+
                         <!-- Location -->
                         <div class="form-group">
                             <label>
                                 <i class="fa-solid fa-location-dot"></i> الموقع
                             </label>
                             <div class="location-row">
-                                <input type="text" id="location" name="location" value="النزهة، شارع القادسية، الرياض">
+                                <input type="text" id="location" name="location"/>
                                 <input type="hidden" id="lat" name="lat"/>
                                 <input type="hidden" id="lng" name="lng"/>
                                 <button type="button" class="btn-detect">
@@ -130,12 +129,7 @@
                             <label for="datetime">
                                 <i class="fa-solid fa-clock"></i> تاريخ ووقت المخالفة
                             </label>
-                            <input
-                                type="datetime-local"
-                                id="datetime"
-                                name="datetime"
-                                value="2025-01-12T10:30"
-                            />
+                            <input type="datetime-local" id="datetime" name="datetime"/>
                         </div>
 
                         <!-- Submit -->
@@ -151,6 +145,22 @@
 
             </div>
         </main>
+
+        <!-- Success Modal -->
+        <div class="modal-overlay" id="successModal" style="display:none;">
+            <div class="modal">
+                <div class="modal-icon" style="color:#2E7D32;">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h3>تم بنجاح!</h3>
+                <p id="successMessage"></p>
+                <div class="modal-actions">
+                    <button class="btn-confirm-success" onclick="window.location.href='my-reports.html'">
+                        عرض البلاغات
+                    </button>
+                </div>
+            </div>
+        </div>
 
         <!-- FOOTER -->
         <footer class="footer">
@@ -176,7 +186,7 @@
                 <p>جميع الحقوق محفوظة &copy; 2025 — عينك</p>
             </div>
         </footer>
-        
+
         <script src="../JavaScript/reports-data.js"></script>
         <script src="../JavaScript/edit-report.js"></script>
     </body>

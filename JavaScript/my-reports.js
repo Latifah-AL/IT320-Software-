@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         countEl.textContent = 'عرض ' + filtered.length + ' بلاغات';
 
-        filtered.forEach(function (r) {
+        filtered.reverse().forEach(function (r) {
             var imgHtml = r.image
                 ? '<img src="' + r.image + '" alt="' + r.title + '"/>'
                 : '<div class="img-placeholder"><i class="fa-solid fa-image"></i><span>لم يتم إرفاق صورة</span></div>';

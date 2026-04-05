@@ -74,7 +74,7 @@
                                 id="title"
                                 name="title"
                                 placeholder="مثال: وقوف مخالف أمام مدخل"
-                                required
+                                
                             />
                         </div>
 
@@ -83,7 +83,7 @@
                             <label for="category">
                                 <i class="fa-solid fa-tag"></i> نوع المخالفة
                             </label>
-                            <select id="category" name="category" required>
+                            <select id="category" name="category" >
                                 <option value="" disabled selected>اختر نوع المخالفة</option>
                                 <option value="parking">
                                     🚗 وقوف مخالف
@@ -116,7 +116,7 @@
                                 name="description"
                                 rows="4"
                                 placeholder="اكتب وصفاً مختصراً للمخالفة..."
-                                required
+                                
                             ></textarea>
                         </div>
 
@@ -139,9 +139,9 @@
                                 <i class="fa-solid fa-location-dot"></i> الموقع
                             </label>
                             <div class="location-row">
-                                <input type="text" id="location" name="location" placeholder="مثال: النزهة، شارع القادسية، الرياض" required>
-                                <input type="hidden" id="lat" name="lat" required>
-                                <input type="hidden" id="lng" name="lng" required>
+                                <input type="text" id="location" name="location" placeholder="مثال: النزهة، شارع القادسية، الرياض">
+                                <input type="hidden" id="lat" name="lat" >
+                                <input type="hidden" id="lng" name="lng">
                                 <button type="button" class="btn-detect" >
                                     <i class="fa-solid fa-crosshairs"></i> تحديد تلقائي
                                 </button>
@@ -152,7 +152,7 @@
                             <label for="datetime">
                                 <i class="fa-solid fa-clock"></i> تاريخ ووقت المخالفة
                             </label>
-                            <input type="datetime-local" id="datetime" name="datetime" required>
+                            <input type="datetime-local" id="datetime" name="datetime">
                         </div>
 
                         <!-- Submit -->
@@ -166,6 +166,21 @@
                     </form>
                 </div>
 
+            </div>
+            <!-- Success Modal -->
+            <div class="modal-overlay" id="successModal" style="display:none;">
+                <div class="modal">
+                    <div class="modal-icon" style="color:#2E7D32;">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <h3>تم بنجاح!</h3>
+                    <p id="successMessage"></p>
+                    <div class="modal-actions">
+                        <button class="btn-confirm-success" onclick="window.location.href='my-reports.html'">
+                            عرض البلاغات
+                        </button>
+                    </div>
+                </div>
             </div>
         </main>
 
