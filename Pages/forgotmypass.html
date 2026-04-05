@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>استعادة كلمة المرور</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../CSS/loginsignup.css"/>
+</head>
+
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="../Images/Logo.png" alt="عينك"/>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">الرئيسية</a></li>
+    <li><a href="login.html">تسجيل الدخول</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="card">
+
+    <div class="card-header">
+      <h1 class="card-title">استعادة كلمة المرور</h1>
+      <p class="card-sub">أدخل بريدك الإلكتروني لإعادة تعيين كلمة المرور</p>
+    </div>
+
+    <div class="success-banner" id="success-banner">
+      ✓ تم إرسال رابط إعادة التعيين بنجاح!
+    </div>
+
+    <form id="reset-form" novalidate>
+
+      <div class="form-group">
+        <label for="email">البريد الإلكتروني</label>
+        <div class="input-wrap">
+          <input type="email" id="email" placeholder="example@domain.com"/>
+          <i class="status-icon" id="email-icon"></i>
+        </div>
+        <span class="field-msg" id="email-msg"></span>
+      </div>
+
+      <button type="submit" class="btn-submit" id="submit-btn">
+        إرسال رابط إعادة التعيين
+      </button>
+
+    </form>
+
+    <div class="divider"><span>أو</span></div>
+
+    <div class="card-footer">
+      تذكرت كلمة المرور؟ <a href="login.html">تسجيل الدخول</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>&copy; 2026 عينك</footer>
+
+<script>
+function fieldState(id, state, msg) {
+  const input = document.getElementById(id);
+  const message = document.getElementById(id + '-msg');
+  const icon = document.getElementById(id + '-icon');
+
+  input.classList.remove('valid','invalid');
+  message.textContent = msg || '';
+  message.className = 'field-msg';
+
+  if (state === 'ok') {
+    input.classList.add('valid');
+    message.classList.add('ok');
+    icon.textContent = '✓';
+    icon.classList.add('show');
+  } else if (state === 'err') {
+    input.classList.add('invalid');
+    message.classList.add('err');
+    icon.textContent = '✗';
+    icon.classList.add('show');
+  } else {
+    icon.classList.remove('show');
+  }
+}
+
+function validateEmail() {
+  const email = document.getElementById('email').value.trim();
+  if (!email) {
+    fieldState('email','err','البريد الإلكتروني مطلوب');
+    return false;
+  }
+  if (!email.includes('@')) {
+    fieldState('email','err','أدخل بريد إلكتروني صحيح');
+    return false;
+  }
+  fieldState('email','ok','');
+  return true;
+}
+
+document.getElementById('email').addEventListener('blur', validateEmail);
+
+document.getElementById('reset-form').addEventListener('submit', function(e){
+  e.preventDefault();
+
+  if (!validateEmail()) return;
+
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'جارٍ الإرسال...';
+
+  setTimeout(() => {
+    document.getElementById('success-banner').style.display = 'block';
+    btn.textContent = 'تم الإرسال';
+  }, 800);
+});
+</script>
+
+</body>
+</html>
