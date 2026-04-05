@@ -188,3 +188,69 @@
     footer { position:relative; z-index:1; background:var(--green-dark); color:rgba(240,236,224,.55); text-align:center; padding:1.1rem; font-size:.85rem; }
     @keyframes slideUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
     @media(max-width:480px){ .form-row{grid-template-columns:1fr} .card{padding:1.8rem 1.3rem} .pw-rules{grid-template-columns:1fr} }
+
+    /* ── Nationality Select ── */
+select {
+    width: 100%;
+    padding: .7rem 2.4rem .7rem 1rem;
+    border: 1.5px solid rgba(27,58,45,.2);
+    border-radius: 10px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: .95rem;
+    background: rgba(255,255,255,.85);
+    color: var(--text-dark);
+    transition: border-color .2s, box-shadow .2s;
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+    direction: rtl;
+}
+
+select:focus {
+    border-color: var(--green-accent);
+    box-shadow: 0 0 0 3px rgba(46,99,73,.12);
+}
+
+select.valid {
+    border-color: var(--green-ok) !important;
+    background: rgba(30,132,73,.04) !important;
+}
+
+select.invalid {
+    border-color: var(--red) !important;
+    box-shadow: 0 0 0 3px rgba(192,57,43,.09) !important;
+    background: rgba(192,57,43,.03) !important;
+}
+
+/* ── Date of Birth ── */
+input[type="date"] {
+    width: 100%;
+    padding: .7rem 2.4rem .7rem 1rem;
+    border: 1.5px solid rgba(27,58,45,.2);
+    border-radius: 10px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: .95rem;
+    background: rgba(255,255,255,.85);
+    color: var(--text-dark);
+    transition: border-color .2s, box-shadow .2s;
+    outline: none;
+    cursor: pointer;
+    direction: ltr;
+    text-align: right;
+}
+
+input[type="date"]:focus {
+    border-color: var(--green-accent);
+    box-shadow: 0 0 0 3px rgba(46,99,73,.12);
+}
+
+input[type="date"].valid {
+    border-color: var(--green-ok) !important;
+    background: rgba(30,132,73,.04) !important;
+}
+
+input[type="date"].invalid {
+    border-color: var(--red) !important;
+    box-shadow: 0 0 0 3px rgba(192,57,43,.09) !important;
+    background: rgba(192,57,43,.03) !important;
+}

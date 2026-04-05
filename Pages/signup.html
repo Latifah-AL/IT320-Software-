@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../CSS/loginsignup.css" />
+  <link rel="stylesheet" href="../CSS/loginsignup.css" />
 </head>
 <body>
 
@@ -25,16 +25,16 @@
 <main>
   <div class="card">
     <div class="card-header">
-
       <div class="card-logo-fallback" style="display:none">ع</div>
       <h1 class="card-title">إنشاء حساب جديد</h1>
       <p class="card-sub">انضم إلى مجتمع عينك وساهم في تحسين مدينتك</p>
     </div>
 
-    <div class="success-banner" id="success-banner">✓ تم إنشاء الحساب بنجاح!    </div>
+    <div class="success-banner" id="success-banner">✓ تم إنشاء الحساب بنجاح!</div>
 
     <form id="signup-form" novalidate autocomplete="off">
 
+      <!-- Name Row -->
       <div class="form-row">
         <div class="form-group">
           <label for="fname">الاسم الأول</label>
@@ -54,6 +54,7 @@
         </div>
       </div>
 
+      <!-- Username -->
       <div class="form-group">
         <label for="username">اسم المستخدم</label>
         <div class="input-wrap">
@@ -63,6 +64,7 @@
         <span class="field-msg" id="username-msg">حروف إنجليزية وأرقام وشرطة سفلية فقط (3–20 حرفاً)</span>
       </div>
 
+      <!-- Email -->
       <div class="form-group">
         <label for="email">البريد الإلكتروني</label>
         <div class="input-wrap">
@@ -72,6 +74,7 @@
         <span class="field-msg" id="email-msg"></span>
       </div>
 
+      <!-- Phone -->
       <div class="form-group">
         <label for="phone">رقم الجوال</label>
         <div class="input-wrap">
@@ -81,6 +84,41 @@
         <span class="field-msg" id="phone-msg">يبدأ بـ 05 ويتكوّن من 10 أرقام</span>
       </div>
 
+      <!-- National ID -->
+      <div class="form-group">
+        <label for="nationalid">رقم الهوية الوطنية</label>
+        <div class="input-wrap">
+          <input type="text" id="nationalid" placeholder="1XXXXXXXXX" maxlength="10"/>
+          <i class="status-icon" id="nationalid-icon"></i>
+        </div>
+        <span class="field-msg" id="nationalid-msg">10 أرقام تبدأ بـ 1 أو 2</span>
+      </div>
+
+      <!-- Nationality -->
+      <div class="form-group">
+        <label for="nationality">الجنسية</label>
+        <div class="input-wrap">
+          <select id="nationality">
+            <option value="" disabled selected>اختر الجنسية</option>
+            <option value="sa">سعودي</option>
+            <option value="other">غير سعودي</option>
+          </select>
+          <i class="status-icon" id="nationality-icon"></i>
+        </div>
+        <span class="field-msg" id="nationality-msg"></span>
+      </div>
+
+      <!-- Date of Birth -->
+      <div class="form-group">
+        <label for="dob">تاريخ الميلاد</label>
+        <div class="input-wrap">
+          <input type="date" id="dob"/>
+          <i class="status-icon" id="dob-icon"></i>
+        </div>
+        <span class="field-msg" id="dob-msg">يجب أن يكون عمرك 18 سنة أو أكثر</span>
+      </div>
+
+      <!-- Password -->
       <div class="form-group">
         <label for="password">كلمة المرور</label>
         <div class="input-wrap">
@@ -99,6 +137,7 @@
         <span class="field-msg" id="password-msg"></span>
       </div>
 
+      <!-- Confirm Password -->
       <div class="form-group">
         <label for="confirm">تأكيد كلمة المرور</label>
         <div class="input-wrap">
@@ -108,9 +147,7 @@
         <span class="field-msg" id="confirm-msg"></span>
       </div>
 
-    
       <span class="terms-err" id="terms-msg"></span>
-
       <button type="submit" class="btn-submit" id="sub-btn">إنشاء الحساب</button>
     </form>
 
@@ -124,164 +161,226 @@
 <script>
 
 function field(id, state, msg) {
-  const inp = document.getElementById(id);
-  const m   = document.getElementById(id + '-msg');
-  const ic  = document.getElementById(id + '-icon');
-  inp.classList.remove('valid','invalid');
-  if (m) { m.className = 'field-msg'; m.textContent = msg || ''; }
-  if (state === 'ok') {
-    inp.classList.add('valid');
-    if (m) m.classList.add('ok');
-    if (ic) { ic.textContent = '✓'; ic.style.color = '#1e8449'; ic.classList.add('show'); }
-  } else if (state === 'err') {
-    inp.classList.add('invalid');
-    if (m) m.classList.add('err');
-    if (ic) { ic.textContent = '✗'; ic.style.color = '#c0392b'; ic.classList.add('show'); }
-  } else {
-    if (ic) ic.classList.remove('show');
-  }
+    var inp = document.getElementById(id);
+    var m   = document.getElementById(id + '-msg');
+    var ic  = document.getElementById(id + '-icon');
+    inp.classList.remove('valid', 'invalid');
+    if (m) { m.className = 'field-msg'; m.textContent = msg || ''; }
+    if (state === 'ok') {
+        inp.classList.add('valid');
+        if (m) m.classList.add('ok');
+        if (ic) { ic.textContent = '✓'; ic.style.color = '#1e8449'; ic.classList.add('show'); }
+    } else if (state === 'err') {
+        inp.classList.add('invalid');
+        if (m) m.classList.add('err');
+        if (ic) { ic.textContent = '✗'; ic.style.color = '#c0392b'; ic.classList.add('show'); }
+    } else {
+        if (ic) ic.classList.remove('show');
+    }
 }
 
-/* toggle pw visibility */
 function toggleEye(inputId, btnId) {
-  const inp = document.getElementById(inputId);
-  const btn = document.getElementById(btnId);
-  inp.type = inp.type === 'password' ? 'text' : 'password';
-  btn.textContent = inp.type === 'password' ? '👁' : '🙈';
+    var inp = document.getElementById(inputId);
+    var btn = document.getElementById(btnId);
+    inp.type = inp.type === 'password' ? 'text' : 'password';
+    btn.textContent = inp.type === 'password' ? '👁' : '🙈';
 }
-document.getElementById('eye-pw').addEventListener('click', () => toggleEye('password','eye-pw'));
-document.getElementById('eye-cf').addEventListener('click', () => toggleEye('confirm','eye-cf'));
+document.getElementById('eye-pw').addEventListener('click', function () { toggleEye('password', 'eye-pw'); });
+document.getElementById('eye-cf').addEventListener('click', function () { toggleEye('confirm', 'eye-cf'); });
 
-/* ── validators ── */
 function vFname() {
-  const v = document.getElementById('fname').value.trim();
-  if (!v)             return field('fname','err','الاسم الأول مطلوب'), false;
-  if (v.length < 2)   return field('fname','err','يجب أن يكون حرفين على الأقل'), false;
-  if (/\d/.test(v))   return field('fname','err','لا يصلح أن يحتوي الاسم على أرقام'), false;
-  field('fname','ok',''); return true;
+    var v = document.getElementById('fname').value.trim();
+    if (!v)           return field('fname', 'err', 'الاسم الأول مطلوب'), false;
+    if (v.length < 2) return field('fname', 'err', 'يجب أن يكون حرفين على الأقل'), false;
+    if (/\d/.test(v)) return field('fname', 'err', 'لا يصلح أن يحتوي الاسم على أرقام'), false;
+    field('fname', 'ok', ''); return true;
 }
 
 function vLname() {
-  const v = document.getElementById('lname').value.trim();
-  if (!v)             return field('lname','err','اسم العائلة مطلوب'), false;
-  if (v.length < 2)   return field('lname','err','يجب أن يكون حرفين على الأقل'), false;
-  if (/\d/.test(v))   return field('lname','err','لا يصلح أن يحتوي الاسم على أرقام'), false;
-  field('lname','ok',''); return true;
+    var v = document.getElementById('lname').value.trim();
+    if (!v)           return field('lname', 'err', 'اسم العائلة مطلوب'), false;
+    if (v.length < 2) return field('lname', 'err', 'يجب أن يكون حرفين على الأقل'), false;
+    if (/\d/.test(v)) return field('lname', 'err', 'لا يصلح أن يحتوي الاسم على أرقام'), false;
+    field('lname', 'ok', ''); return true;
 }
 
 function vUsername() {
-  const v   = document.getElementById('username').value.trim();
-  const msg = document.getElementById('username-msg');
-  function fail(t) { field('username','err',t); msg.className='field-msg err'; return false; }
-  if (!v)           return fail('اسم المستخدم مطلوب');
-  if (v.length < 3) return fail('يجب أن يتكوّن من 3 أحرف على الأقل');
-  if (v.length > 20)return fail('يجب ألّا يتجاوز 20 حرفاً');
-  if (!/^[a-zA-Z0-9_]+$/.test(v)) return fail('حروف إنجليزية وأرقام وشرطة سفلية فقط');
-  field('username','ok',''); msg.className='field-msg'; msg.textContent='حروف إنجليزية وأرقام وشرطة سفلية فقط (3–20 حرفاً)'; return true;
+    var v   = document.getElementById('username').value.trim();
+    var msg = document.getElementById('username-msg');
+    function fail(t) { field('username', 'err', t); msg.className = 'field-msg err'; return false; }
+    if (!v)            return fail('اسم المستخدم مطلوب');
+    if (v.length < 3)  return fail('يجب أن يتكوّن من 3 أحرف على الأقل');
+    if (v.length > 20) return fail('يجب ألّا يتجاوز 20 حرفاً');
+    if (!/^[a-zA-Z0-9_]+$/.test(v)) return fail('حروف إنجليزية وأرقام وشرطة سفلية فقط');
+    field('username', 'ok', '');
+    msg.className   = 'field-msg';
+    msg.textContent = 'حروف إنجليزية وأرقام وشرطة سفلية فقط (3–20 حرفاً)';
+    return true;
 }
 
 function vEmail() {
-  const v = document.getElementById('email').value.trim();
-  if (!v) return field('email','err','البريد الإلكتروني مطلوب'), false;
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v))
-    return field('email','err','صيغة البريد غير صحيحة — مثال: name@domain.com'), false;
-  field('email','ok',''); return true;
+    var v = document.getElementById('email').value.trim();
+    if (!v) return field('email', 'err', 'البريد الإلكتروني مطلوب'), false;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v))
+        return field('email', 'err', 'صيغة البريد غير صحيحة — مثال: name@domain.com'), false;
+    field('email', 'ok', ''); return true;
 }
 
 function vPhone() {
-  const el  = document.getElementById('phone');
-  const v   = el.value.trim();
-  const msg = document.getElementById('phone-msg');
-  function fail(t) { field('phone','err',t); msg.className='field-msg err'; return false; }
-  if (!v)               return fail('رقم الجوال مطلوب');
-  if (!/^\d+$/.test(v)) return fail('أرقام فقط — لا تشوف مسافات أو حروف');
-  if (!v.startsWith('05')) return fail('يجب أن يبدأ رقم الجوال بـ 05');
-  if (v.length !== 10)  return fail(`يجب أن يتكوّن من 10 أرقام (أدخلت ${v.length})`);
-  field('phone','ok',''); msg.className='field-msg'; msg.textContent='يبدأ بـ 05 ويتكوّن من 10 أرقام'; return true;
+    var v   = document.getElementById('phone').value.trim();
+    var msg = document.getElementById('phone-msg');
+    function fail(t) { field('phone', 'err', t); msg.className = 'field-msg err'; return false; }
+    if (!v)                  return fail('رقم الجوال مطلوب');
+    if (!/^\d+$/.test(v))    return fail('أرقام فقط');
+    if (!v.startsWith('05')) return fail('يجب أن يبدأ رقم الجوال بـ 05');
+    if (v.length !== 10)     return fail('يجب أن يتكوّن من 10 أرقام (أدخلت ' + v.length + ')');
+    field('phone', 'ok', '');
+    msg.className   = 'field-msg';
+    msg.textContent = 'يبدأ بـ 05 ويتكوّن من 10 أرقام';
+    return true;
 }
 
-const RULES = [
-  { id:'r-len',  test: v => v.length >= 8,           label:'8 أحرف على الأقل' },
-  { id:'r-up',   test: v => /[A-Z]/.test(v),         label:'حرف كبير (A-Z)' },
-  { id:'r-lo',   test: v => /[a-z]/.test(v),         label:'حرف صغير (a-z)' },
-  { id:'r-num',  test: v => /[0-9]/.test(v),         label:'رقم واحد' },
-  { id:'r-sym',  test: v => /[^A-Za-z0-9]/.test(v), label:'رمز خاص' },
+function vNationalId() {
+    var v   = document.getElementById('nationalid').value.trim();
+    var msg = document.getElementById('nationalid-msg');
+    function fail(t) { field('nationalid', 'err', t); msg.className = 'field-msg err'; return false; }
+    if (!v)                            return fail('رقم الهوية مطلوب');
+    if (!/^\d+$/.test(v))              return fail('أرقام فقط');
+    if (v.length !== 10)               return fail('يجب أن يتكوّن من 10 أرقام');
+    if (v[0] !== '1' && v[0] !== '2') return fail('يجب أن يبدأ بـ 1 أو 2');
+    field('nationalid', 'ok', '');
+    msg.className   = 'field-msg';
+    msg.textContent = '10 أرقام تبدأ بـ 1 أو 2';
+    return true;
+}
+
+function vNationality() {
+    var v = document.getElementById('nationality').value;
+    if (!v) return field('nationality', 'err', 'يرجى اختيار الجنسية'), false;
+    field('nationality', 'ok', ''); return true;
+}
+
+function vDob() {
+    var v   = document.getElementById('dob').value;
+    var msg = document.getElementById('dob-msg');
+    function fail(t) { field('dob', 'err', t); msg.className = 'field-msg err'; return false; }
+    if (!v) return fail('تاريخ الميلاد مطلوب');
+    var today = new Date();
+    var birth = new Date(v);
+    var age   = today.getFullYear() - birth.getFullYear();
+    var m     = today.getMonth() - birth.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
+    if (age < 18)  return fail('يجب أن يكون عمرك 18 سنة أو أكثر');
+    if (age > 100) return fail('تاريخ الميلاد غير صحيح');
+    field('dob', 'ok', '');
+    msg.className   = 'field-msg';
+    msg.textContent = 'يجب أن يكون عمرك 18 سنة أو أكثر';
+    return true;
+}
+
+var RULES = [
+    { id: 'r-len', test: function (v) { return v.length >= 8; } },
+    { id: 'r-up',  test: function (v) { return /[A-Z]/.test(v); } },
+    { id: 'r-lo',  test: function (v) { return /[a-z]/.test(v); } },
+    { id: 'r-num', test: function (v) { return /[0-9]/.test(v); } },
+    { id: 'r-sym', test: function (v) { return /[^A-Za-z0-9]/.test(v); } },
 ];
-const S_LEVELS = [
-  {pct:'0%',  clr:'transparent', lbl:''},
-  {pct:'20%', clr:'#c0392b',     lbl:'⚠ ضعيفة جداً'},
-  {pct:'40%', clr:'#e67e22',     lbl:'△ ضعيفة'},
-  {pct:'60%', clr:'#f39c12',     lbl:'◎ مقبولة'},
-  {pct:'80%', clr:'#2980b9',     lbl:'✓ جيدة'},
-  {pct:'100%',clr:'#1e8449',     lbl:'✓✓ قوية جداً'},
+var S_LEVELS = [
+    { pct: '0%',   clr: 'transparent', lbl: '' },
+    { pct: '20%',  clr: '#c0392b',     lbl: '⚠ ضعيفة جداً' },
+    { pct: '40%',  clr: '#e67e22',     lbl: '△ ضعيفة' },
+    { pct: '60%',  clr: '#f39c12',     lbl: '◎ مقبولة' },
+    { pct: '80%',  clr: '#2980b9',     lbl: '✓ جيدة' },
+    { pct: '100%', clr: '#1e8449',     lbl: '✓✓ قوية جداً' },
 ];
 
 function vPassword() {
-  const v   = document.getElementById('password').value;
-  const msg = document.getElementById('password-msg');
-  let score = 0;
-  RULES.forEach(r => { const met = r.test(v); document.getElementById(r.id).classList.toggle('met', met); if (met) score++; });
-  const lvl = v ? S_LEVELS[score] : S_LEVELS[0];
-  document.getElementById('s-fill').style.width      = lvl.pct;
-  document.getElementById('s-fill').style.background = lvl.clr;
-  const sl = document.getElementById('s-lbl');
-  sl.textContent = lvl.lbl; sl.style.color = lvl.clr;
-
-  if (!v) { field('password','',''); msg.textContent=''; return false; }
-  const missing = RULES.filter(r => !r.test(v)).map(r => r.label);
-  if (missing.length) {
-    field('password','err','ينقص: ' + missing.join(' · '));
-    return false;
-  }
-  field('password','ok',''); msg.textContent='';
-  if (document.getElementById('confirm').value) vConfirm();
-  return true;
+    var v     = document.getElementById('password').value;
+    var msg   = document.getElementById('password-msg');
+    var score = 0;
+    RULES.forEach(function (r) {
+        var met = r.test(v);
+        document.getElementById(r.id).classList.toggle('met', met);
+        if (met) score++;
+    });
+    var lvl = v ? S_LEVELS[score] : S_LEVELS[0];
+    document.getElementById('s-fill').style.width      = lvl.pct;
+    document.getElementById('s-fill').style.background = lvl.clr;
+    var sl = document.getElementById('s-lbl');
+    sl.textContent = lvl.lbl;
+    sl.style.color = lvl.clr;
+    if (!v) { field('password', '', ''); msg.textContent = ''; return false; }
+    var missing = RULES.filter(function (r) { return !r.test(v); });
+    if (missing.length) {
+        field('password', 'err', 'كلمة المرور لا تستوفي جميع الشروط');
+        return false;
+    }
+    field('password', 'ok', '');
+    msg.textContent = '';
+    if (document.getElementById('confirm').value) vConfirm();
+    return true;
 }
 
 function vConfirm() {
-  const pw = document.getElementById('password').value;
-  const cf = document.getElementById('confirm').value;
-  if (!cf)     return field('confirm','err','تأكيد كلمة المرور مطلوب'), false;
-  if (cf !== pw) return field('confirm','err','كلمتا المرور غير متطابقتين — تحقق من الكتابة'), false;
-  field('confirm','ok','كلمتا المرور متطابقتان ✓'); return true;
+    var pw = document.getElementById('password').value;
+    var cf = document.getElementById('confirm').value;
+    if (!cf)       return field('confirm', 'err', 'تأكيد كلمة المرور مطلوب'), false;
+    if (cf !== pw) return field('confirm', 'err', 'كلمتا المرور غير متطابقتين — تحقق من الكتابة'), false;
+    field('confirm', 'ok', 'كلمتا المرور متطابقتان ✓'); return true;
 }
 
-/* ── live attach ── */
-['fname','lname'].forEach(id => {
-  const fn = id === 'fname' ? vFname : vLname;
-  document.getElementById(id).addEventListener('blur',  fn);
-  document.getElementById(id).addEventListener('input', fn);
+// Live listeners
+['fname', 'lname'].forEach(function (id) {
+    var fn = id === 'fname' ? vFname : vLname;
+    document.getElementById(id).addEventListener('blur', fn);
+    document.getElementById(id).addEventListener('input', fn);
 });
-document.getElementById('username').addEventListener('blur',  vUsername);
+document.getElementById('username').addEventListener('blur', vUsername);
 document.getElementById('username').addEventListener('input', vUsername);
-document.getElementById('email').addEventListener('blur',  vEmail);
+document.getElementById('email').addEventListener('blur', vEmail);
 document.getElementById('email').addEventListener('input', vEmail);
-document.getElementById('phone').addEventListener('input', () => {
-  document.getElementById('phone').value = document.getElementById('phone').value.replace(/\D/g,'');
-  vPhone();
+document.getElementById('phone').addEventListener('input', function () {
+    this.value = this.value.replace(/\D/g, '');
+    vPhone();
 });
 document.getElementById('phone').addEventListener('blur', vPhone);
-document.getElementById('password').addEventListener('input', () => { vPassword(); if (document.getElementById('confirm').value) vConfirm(); });
+document.getElementById('nationalid').addEventListener('input', function () {
+    this.value = this.value.replace(/\D/g, '');
+    vNationalId();
+});
+document.getElementById('nationalid').addEventListener('blur', vNationalId);
+document.getElementById('nationality').addEventListener('change', vNationality);
+document.getElementById('dob').addEventListener('change', vDob);
+document.getElementById('dob').addEventListener('blur', vDob);
+document.getElementById('password').addEventListener('input', function () {
+    vPassword();
+    if (document.getElementById('confirm').value) vConfirm();
+});
 document.getElementById('password').addEventListener('blur', vPassword);
 document.getElementById('confirm').addEventListener('input', vConfirm);
-document.getElementById('confirm').addEventListener('blur',  vConfirm);
+document.getElementById('confirm').addEventListener('blur', vConfirm);
 
-
-/* ── submit ── */
-document.getElementById('signup-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const results = [vFname(), vLname(), vUsername(), vEmail(), vPhone(), vPassword(), vConfirm()];
-  const allOk   = results.every(Boolean);
- if (!allOk)  {
-    const first = document.querySelector('input.invalid');
-    if (first) first.scrollIntoView({behavior:'smooth', block:'center'});
-    return;
-  }
-  const btn = document.getElementById('sub-btn');
-  btn.disabled = true; btn.textContent = 'جارٍ الإنشاء…';
-  document.getElementById('success-banner').style.display = 'block';
-  setTimeout(() => window.location.href = '../Pages/profile.html', 2200);
+// Submit
+document.getElementById('signup-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var results = [
+        vFname(), vLname(), vUsername(), vEmail(),
+        vPhone(), vNationalId(), vNationality(), vDob(),
+        vPassword(), vConfirm()
+    ];
+    var allOk = results.every(Boolean);
+    if (!allOk) {
+        var first = document.querySelector('input.invalid, select.invalid');
+        if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+    }
+    var btn = document.getElementById('sub-btn');
+    btn.disabled    = true;
+    btn.textContent = 'جارٍ الإنشاء…';
+    document.getElementById('success-banner').style.display = 'block';
+    setTimeout(function () { window.location.href = 'login.html'; }, 2200);
 });
+
 </script>
 </body>
 </html>
