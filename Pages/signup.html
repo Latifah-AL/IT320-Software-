@@ -8,224 +8,288 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../CSS/loginsignup.css" />
-    <link rel="stylesheet" href="../CSS/main.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 <body>
-      <!-- NAVBAR -->
-      <nav class="navbar">
-      <div class="nav-inner">
-      <a href="index.html" class="logo">
-                    <img src="../Images/logo.png" alt="عينك"/>
-                </a>
-                <ul class="nav-links">
-                    <li><a href="index.html">الرئيسية</a></li>
-                    <li><a href="index.html#features">المميزات</a></li>
-                    <li><a href="index.html#violations">المخالفات</a></li>
-                </ul>
-                <div class="nav-auth">
-                    <a href="login.html">تسجيل الدخول</a>
-                    <a href="signup.html" class="btn-green">إنشاء حساب</a>
-                </div>
-                <button class="burger" id="burger">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-            </div>
-            <div class="mobile-nav" id="mobileNav">
-                <a href="index.html">الرئيسية</a>
-                <a href="index.html#features">المميزات</a>
-                <a href="index.html#violations">المخالفات</a>
-                <a href="login.html">تسجيل الدخول</a>
-                <a href="signup.html" class="btn-green">إنشاء حساب</a>
-            </div>
-        </nav>
+
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="../Images/Logo.png" alt="عينك" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+    <div class="nav-logo-fallback" style="display:none">ع</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">الرئيسية</a></li>
+    <li><a href="login.html">تسجيل الدخول</a></li>
+  </ul>
+</nav>
 
 <main>
   <div class="card">
     <div class="card-header">
-  
+
       <div class="card-logo-fallback" style="display:none">ع</div>
       <h1 class="card-title">إنشاء حساب جديد</h1>
       <p class="card-sub">انضم إلى مجتمع عينك وساهم في تحسين مدينتك</p>
     </div>
 
-    <form id="signup-form" onsubmit="handleSignup(event)" novalidate>
+    <div class="success-banner" id="success-banner">✓ تم إنشاء الحساب بنجاح! جارٍ تحويلك لتسجيل الدخول…</div>
 
-      <!-- Name row -->
+    <form id="signup-form" novalidate autocomplete="off">
+
       <div class="form-row">
         <div class="form-group">
           <label for="fname">الاسم الأول</label>
-          <input type="text" id="fname" placeholder="مثال: سارة" required />
+          <div class="input-wrap">
+            <input type="text" id="fname" placeholder="سارة"/>
+            <i class="status-icon" id="fname-icon"></i>
+          </div>
+          <span class="field-msg" id="fname-msg"></span>
         </div>
         <div class="form-group">
           <label for="lname">اسم العائلة</label>
-          <input type="text" id="lname" placeholder="مثال: العمري" required />
+          <div class="input-wrap">
+            <input type="text" id="lname" placeholder="العمري"/>
+            <i class="status-icon" id="lname-icon"></i>
+          </div>
+          <span class="field-msg" id="lname-msg"></span>
         </div>
       </div>
 
-      <!-- Username -->
       <div class="form-group">
         <label for="username">اسم المستخدم</label>
-        <input type="text" id="username" placeholder="مثال: sara_2026" required />
-        <span class="hint">يستخدم لتسجيل الدخول — لا يمكن تغييره لاحقاً</span>
+        <div class="input-wrap">
+          <input type="text" id="username" placeholder="sara_2026" autocomplete="username"/>
+          <i class="status-icon" id="username-icon"></i>
+        </div>
+        <span class="field-msg" id="username-msg">حروف إنجليزية وأرقام وشرطة سفلية فقط (3–20 حرفاً)</span>
       </div>
 
-      <!-- Email -->
       <div class="form-group">
         <label for="email">البريد الإلكتروني</label>
-        <input type="email" id="email" placeholder="example@domain.com" required />
+        <div class="input-wrap">
+          <input type="email" id="email" placeholder="example@domain.com" autocomplete="email"/>
+          <i class="status-icon" id="email-icon"></i>
+        </div>
+        <span class="field-msg" id="email-msg"></span>
       </div>
 
-      <!-- Phone -->
       <div class="form-group">
         <label for="phone">رقم الجوال</label>
-        <input type="tel" id="phone" placeholder="05XXXXXXXX" maxlength="10" required />
+        <div class="input-wrap">
+          <input type="tel" id="phone" placeholder="05XXXXXXXX" maxlength="10"/>
+          <i class="status-icon" id="phone-icon"></i>
+        </div>
+        <span class="field-msg" id="phone-msg">يبدأ بـ 05 ويتكوّن من 10 أرقام</span>
       </div>
 
-      <!-- National ID -->
-      <div class="form-group">
-          <label for="nationalid">رقم الهوية الوطنية</label>
-          <input type="text" id="nationalid" placeholder="1XXXXXXXXX" maxlength="10" required />
-      </div>
-
-      <!-- Nationality -->
-      <div class="form-group">
-          <label for="nationality">الجنسية</label>
-          <select id="nationality" required>
-              <option value="" disabled selected>اختر الجنسية</option>
-              <option value="sa">سعودي</option>
-              <option value="other">غير سعودي</option>
-          </select>
-      </div>
-
-      <!-- Date of Birth -->
-      <div class="form-group">
-          <label for="dob">تاريخ الميلاد</label>
-          <input type="date" id="dob" required />
-      </div>
-
-      <!-- Password -->
       <div class="form-group">
         <label for="password">كلمة المرور</label>
-        <input type="password" id="password" placeholder="••••••••" required
-               oninput="checkStrength(this.value)" />
-        <div class="strength-bar"><div class="strength-fill" id="strength-fill"></div></div>
-        <span class="hint" id="strength-label">أدخل كلمة المرور</span>
+        <div class="input-wrap">
+          <input type="password" id="password" placeholder="••••••••" autocomplete="new-password"/>
+          <button type="button" class="toggle-pw" id="eye-pw" aria-label="إظهار كلمة المرور">👁</button>
+        </div>
+        <div class="strength-bar"><div class="strength-fill" id="s-fill"></div></div>
+        <span class="strength-lbl" id="s-lbl"></span>
+        <div class="pw-rules">
+          <span class="pw-rule" id="r-len"><span class="dot"></span>8 أحرف على الأقل</span>
+          <span class="pw-rule" id="r-up"><span class="dot"></span>حرف كبير (A-Z)</span>
+          <span class="pw-rule" id="r-lo"><span class="dot"></span>حرف صغير (a-z)</span>
+          <span class="pw-rule" id="r-num"><span class="dot"></span>رقم واحد على الأقل</span>
+          <span class="pw-rule" id="r-sym"><span class="dot"></span>رمز خاص (!@#$…)</span>
+        </div>
+        <span class="field-msg" id="password-msg"></span>
       </div>
 
-      <!-- Confirm password -->
       <div class="form-group">
         <label for="confirm">تأكيد كلمة المرور</label>
-        <input type="password" id="confirm" placeholder="••••••••" required />
-        <span class="hint" id="match-hint"></span>
+        <div class="input-wrap">
+          <input type="password" id="confirm" placeholder="••••••••" autocomplete="new-password"/>
+          <button type="button" class="toggle-pw" id="eye-cf" aria-label="إظهار تأكيد كلمة المرور">👁</button>
+        </div>
+        <span class="field-msg" id="confirm-msg"></span>
       </div>
 
-      <!-- Terms -->
       <div class="terms-row">
-        <input type="checkbox" id="terms" required />
-        <label for="terms">
-          أوافق على <a href="#">شروط الاستخدام</a> و<a href="#">سياسة الخصوصية</a>
-        </label>
+        <input type="checkbox" id="terms"/>
+        <label for="terms">أوافق على <a href="#">شروط الاستخدام</a> و<a href="#">سياسة الخصوصية</a></label>
       </div>
+      <span class="terms-err" id="terms-msg"></span>
 
-      <button type="submit" class="btn-submit">إنشاء الحساب</button>
+      <button type="submit" class="btn-submit" id="sub-btn">إنشاء الحساب</button>
     </form>
 
     <div class="divider"><span>أو</span></div>
-
-    <div class="card-footer">
-      لديك حساب بالفعل؟ <a href="login.html">تسجيل الدخول</a>
-    </div>
+    <div class="card-footer">لديك حساب بالفعل؟ <a href="login.html">تسجيل الدخول</a></div>
   </div>
 </main>
 
-<!-- FOOTER -->
-        <footer class="footer">
-            <div class="footer-inner">
-                <div class="footer-brand">
-                    <img src="../Images/logo.png" alt="عينك"/>
-                    <p>منصة مجتمعية للإبلاغ عن مخالفات المدن في المملكة العربية السعودية</p>
-                </div>
-                <div class="footer-links">
-                    <h5>روابط</h5>
-                    <a href="index.html">الرئيسية</a>
-                    <a href="index.html#features">المميزات</a>
-                    <a href="index.html#violations">المخالفات</a>
-                    <a href="login.html">تسجيل الدخول</a>
-                    <a href="signup.html">إنشاء حساب</a>
-                </div>
-                <div class="footer-links">
-                    <h5>تواصل معنا</h5>
-                    <span><i class="fa-solid fa-envelope"></i> support@aynek.sa</span>
-                    <span><i class="fa-solid fa-location-dot"></i> المملكة العربية السعودية</span>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>جميع الحقوق محفوظة &copy; 2025 — عينك</p>
-            </div>
-        </footer>
+<footer>&copy; 2026 عينك — جامعة الملك سعود · IT 320</footer>
 
-        <script>
-            // Mobile menu
-            document.getElementById('burger').addEventListener('click', function () {
-                document.getElementById('mobileNav').classList.toggle('open');
-            });
+<script>
+/* ── utility ──  all in javascript since both pages share the same validation logic and we want to keep them consistent without duplication and since there is no database in this phase so i didnt use php*/
+function field(id, state, msg) {
+  const inp = document.getElementById(id);
+  const m   = document.getElementById(id + '-msg');
+  const ic  = document.getElementById(id + '-icon');
+  inp.classList.remove('valid','invalid');
+  if (m) { m.className = 'field-msg'; m.textContent = msg || ''; }
+  if (state === 'ok') {
+    inp.classList.add('valid');
+    if (m) m.classList.add('ok');
+    if (ic) { ic.textContent = '✓'; ic.style.color = '#1e8449'; ic.classList.add('show'); }
+  } else if (state === 'err') {
+    inp.classList.add('invalid');
+    if (m) m.classList.add('err');
+    if (ic) { ic.textContent = '✗'; ic.style.color = '#c0392b'; ic.classList.add('show'); }
+  } else {
+    if (ic) ic.classList.remove('show');
+  }
+}
 
-            // Password strength
-            function checkStrength(val) {
-                var fill  = document.getElementById('strength-fill');
-                var label = document.getElementById('strength-label');
-                var score = 0;
-                if (val.length >= 8)          score++;
-                if (/[A-Z]/.test(val))        score++;
-                if (/[0-9]/.test(val))        score++;
-                if (/[^A-Za-z0-9]/.test(val)) score++;
+/* toggle pw visibility */
+function toggleEye(inputId, btnId) {
+  const inp = document.getElementById(inputId);
+  const btn = document.getElementById(btnId);
+  inp.type = inp.type === 'password' ? 'text' : 'password';
+  btn.textContent = inp.type === 'password' ? '👁' : '🙈';
+}
+document.getElementById('eye-pw').addEventListener('click', () => toggleEye('password','eye-pw'));
+document.getElementById('eye-cf').addEventListener('click', () => toggleEye('confirm','eye-cf'));
 
-                var levels = [
-                    { pct: '0%',   color: 'transparent', text: 'أدخل كلمة المرور' },
-                    { pct: '30%',  color: '#c0392b',     text: 'ضعيفة جداً' },
-                    { pct: '55%',  color: '#e67e22',     text: 'مقبولة' },
-                    { pct: '78%',  color: '#2980b9',     text: 'جيدة' },
-                    { pct: '100%', color: '#27ae60',     text: 'قوية جداً' },
-                ];
+/* ── validators ── */
+function vFname() {
+  const v = document.getElementById('fname').value.trim();
+  if (!v)             return field('fname','err','الاسم الأول مطلوب'), false;
+  if (v.length < 2)   return field('fname','err','يجب أن يكون حرفين على الأقل'), false;
+  if (/\d/.test(v))   return field('fname','err','لا يجوز أن يحتوي الاسم على أرقام'), false;
+  field('fname','ok',''); return true;
+}
 
-                var lvl = val.length === 0 ? levels[0] : levels[score] || levels[4];
-                fill.style.width      = lvl.pct;
-                fill.style.background = lvl.color;
-                label.textContent     = lvl.text;
-            }
+function vLname() {
+  const v = document.getElementById('lname').value.trim();
+  if (!v)             return field('lname','err','اسم العائلة مطلوب'), false;
+  if (v.length < 2)   return field('lname','err','يجب أن يكون حرفين على الأقل'), false;
+  if (/\d/.test(v))   return field('lname','err','لا يجوز أن يحتوي الاسم على أرقام'), false;
+  field('lname','ok',''); return true;
+}
 
-            // Password match
-            document.getElementById('confirm').addEventListener('input', function () {
-                var hint = document.getElementById('match-hint');
-                var pw   = document.getElementById('password').value;
-                if (!this.value) { hint.textContent = ''; return; }
-                if (this.value === pw) {
-                    hint.textContent = '✓ كلمتا المرور متطابقتان';
-                    hint.style.color = '#27ae60';
-                } else {
-                    hint.textContent = '✗ كلمتا المرور غير متطابقتين';
-                    hint.style.color = '#c0392b';
-                }
-            });
+function vUsername() {
+  const v   = document.getElementById('username').value.trim();
+  const msg = document.getElementById('username-msg');
+  function fail(t) { field('username','err',t); msg.className='field-msg err'; return false; }
+  if (!v)           return fail('اسم المستخدم مطلوب');
+  if (v.length < 3) return fail('يجب أن يتكوّن من 3 أحرف على الأقل');
+  if (v.length > 20)return fail('يجب ألّا يتجاوز 20 حرفاً');
+  if (!/^[a-zA-Z0-9_]+$/.test(v)) return fail('حروف إنجليزية وأرقام وشرطة سفلية فقط');
+  field('username','ok',''); msg.className='field-msg'; msg.textContent='حروف إنجليزية وأرقام وشرطة سفلية فقط (3–20 حرفاً)'; return true;
+}
 
-            // Submit
-            function handleSignup(e) {
-                e.preventDefault();
-                var pw = document.getElementById('password').value;
-                var cf = document.getElementById('confirm').value;
-                if (pw !== cf) {
-                    alert('كلمتا المرور غير متطابقتين!');
-                    return;
-                }
-                if (!document.getElementById('terms').checked) {
-                    alert('يجب الموافقة على الشروط والأحكام أولاً.');
-                    return;
-                }
-                alert('تم إنشاء الحساب بنجاح!');
-                window.location.href = 'login.html';
-            }
-        </script>
+function vEmail() {
+  const v = document.getElementById('email').value.trim();
+  if (!v) return field('email','err','البريد الإلكتروني مطلوب'), false;
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v))
+    return field('email','err','صيغة البريد غير صحيحة — مثال: name@domain.com'), false;
+  field('email','ok',''); return true;
+}
 
-    </body>
+function vPhone() {
+  const el  = document.getElementById('phone');
+  const v   = el.value.trim();
+  const msg = document.getElementById('phone-msg');
+  function fail(t) { field('phone','err',t); msg.className='field-msg err'; return false; }
+  if (!v)               return fail('رقم الجوال مطلوب');
+  if (!/^\d+$/.test(v)) return fail('أرقام فقط — لا تشوف مسافات أو حروف');
+  if (!v.startsWith('05')) return fail('يجب أن يبدأ رقم الجوال بـ 05');
+  if (v.length !== 10)  return fail(`يجب أن يتكوّن من 10 أرقام (أدخلت ${v.length})`);
+  field('phone','ok',''); msg.className='field-msg'; msg.textContent='يبدأ بـ 05 ويتكوّن من 10 أرقام'; return true;
+}
+
+const RULES = [
+  { id:'r-len',  test: v => v.length >= 8,           label:'8 أحرف على الأقل' },
+  { id:'r-up',   test: v => /[A-Z]/.test(v),         label:'حرف كبير (A-Z)' },
+  { id:'r-lo',   test: v => /[a-z]/.test(v),         label:'حرف صغير (a-z)' },
+  { id:'r-num',  test: v => /[0-9]/.test(v),         label:'رقم واحد' },
+  { id:'r-sym',  test: v => /[^A-Za-z0-9]/.test(v), label:'رمز خاص' },
+];
+const S_LEVELS = [
+  {pct:'0%',  clr:'transparent', lbl:''},
+  {pct:'20%', clr:'#c0392b',     lbl:'⚠ ضعيفة جداً'},
+  {pct:'40%', clr:'#e67e22',     lbl:'△ ضعيفة'},
+  {pct:'60%', clr:'#f39c12',     lbl:'◎ مقبولة'},
+  {pct:'80%', clr:'#2980b9',     lbl:'✓ جيدة'},
+  {pct:'100%',clr:'#1e8449',     lbl:'✓✓ قوية جداً'},
+];
+
+function vPassword() {
+  const v   = document.getElementById('password').value;
+  const msg = document.getElementById('password-msg');
+  let score = 0;
+  RULES.forEach(r => { const met = r.test(v); document.getElementById(r.id).classList.toggle('met', met); if (met) score++; });
+  const lvl = v ? S_LEVELS[score] : S_LEVELS[0];
+  document.getElementById('s-fill').style.width      = lvl.pct;
+  document.getElementById('s-fill').style.background = lvl.clr;
+  const sl = document.getElementById('s-lbl');
+  sl.textContent = lvl.lbl; sl.style.color = lvl.clr;
+
+  if (!v) { field('password','',''); msg.textContent=''; return false; }
+  const missing = RULES.filter(r => !r.test(v)).map(r => r.label);
+  if (missing.length) {
+    field('password','err','ينقص: ' + missing.join(' · '));
+    return false;
+  }
+  field('password','ok',''); msg.textContent='';
+  if (document.getElementById('confirm').value) vConfirm();
+  return true;
+}
+
+function vConfirm() {
+  const pw = document.getElementById('password').value;
+  const cf = document.getElementById('confirm').value;
+  if (!cf)     return field('confirm','err','تأكيد كلمة المرور مطلوب'), false;
+  if (cf !== pw) return field('confirm','err','كلمتا المرور غير متطابقتين — تحقق من الكتابة'), false;
+  field('confirm','ok','كلمتا المرور متطابقتان ✓'); return true;
+}
+
+/* ── live attach ── */
+['fname','lname'].forEach(id => {
+  const fn = id === 'fname' ? vFname : vLname;
+  document.getElementById(id).addEventListener('blur',  fn);
+  document.getElementById(id).addEventListener('input', fn);
+});
+document.getElementById('username').addEventListener('blur',  vUsername);
+document.getElementById('username').addEventListener('input', vUsername);
+document.getElementById('email').addEventListener('blur',  vEmail);
+document.getElementById('email').addEventListener('input', vEmail);
+document.getElementById('phone').addEventListener('input', () => {
+  document.getElementById('phone').value = document.getElementById('phone').value.replace(/\D/g,'');
+  vPhone();
+});
+document.getElementById('phone').addEventListener('blur', vPhone);
+document.getElementById('password').addEventListener('input', () => { vPassword(); if (document.getElementById('confirm').value) vConfirm(); });
+document.getElementById('password').addEventListener('blur', vPassword);
+document.getElementById('confirm').addEventListener('input', vConfirm);
+document.getElementById('confirm').addEventListener('blur',  vConfirm);
+document.getElementById('terms').addEventListener('change', () => {
+  document.getElementById('terms-msg').textContent = document.getElementById('terms').checked ? '' : 'يجب الموافقة على الشروط والأحكام';
+});
+
+/* ── submit ── */
+document.getElementById('signup-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const results = [vFname(), vLname(), vUsername(), vEmail(), vPhone(), vPassword(), vConfirm()];
+  const allOk   = results.every(Boolean);
+  const terms   = document.getElementById('terms').checked;
+  document.getElementById('terms-msg').textContent = terms ? '' : 'يجب الموافقة على الشروط والأحكام للمتابعة';
+
+  if (!allOk || !terms) {
+    const first = document.querySelector('input.invalid');
+    if (first) first.scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+  const btn = document.getElementById('sub-btn');
+  btn.disabled = true; btn.textContent = 'جارٍ الإنشاء…';
+  document.getElementById('success-banner').style.display = 'block';
+  setTimeout(() => window.location.href = '../Pages/my-reports.html', 2200);
+});
+</script>
+</body>
 </html>

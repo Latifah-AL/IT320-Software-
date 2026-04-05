@@ -8,128 +8,163 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../CSS/loginsignup.css" />
-  <link rel="stylesheet" href="../CSS/main.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="nav-inner">
-            <a href="index.html" class="logo">
-                <img src="../Images/logo.png" alt="عينك"/>
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html">الرئيسية</a></li>
-                <li><a href="index.html#features">المميزات</a></li>
-                <li><a href="index.html#violations">المخالفات</a></li>
-            </ul>
-            <div class="nav-auth">
-                <a href="signup.html" >إنشاء حساب</a>
-                <a href="login.html" class="btn-green">تسجيل الدخول</a>
-
-            </div>
-            <button class="burger" id="burger">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-        </div>
-        <div class="mobile-nav" id="mobileNav">
-            <a href="index.html">الرئيسية</a>
-            <a href="index.html#features">المميزات</a>
-            <a href="index.html#violations">المخالفات</a>
-            <a href="signup.html" >إنشاء حساب</a>
-            <a href="login.html" class="btn-green">تسجيل الدخول</a>
-        </div>
-    </nav>
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="../Images/Logo.png" alt="عينك" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+    <div class="nav-logo-fallback" style="display:none">ع</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">الرئيسية</a></li>
+    <li><a href="signup.html">إنشاء حساب</a></li>
+  </ul>
+</nav>
 
 <main>
   <div class="card">
     <div class="card-header">
+    
       <div class="card-logo-fallback" style="display:none">ع</div>
       <h1 class="card-title">تسجيل الدخول</h1>
       <p class="card-sub">مرحباً بك في منصة عينك</p>
     </div>
 
-    <!-- Role toggle -->
     <div class="role-toggle">
-      <button class="role-btn active" onclick="setRole('user', this)">👤 مستخدم</button>
-      <button class="role-btn"        onclick="setRole('admin', this)">🛡️ مشرف</button>
+      <button class="role-btn active" id="btn-user"  onclick="setRole('user')">👤 مستخدم</button>
+      <button class="role-btn"        id="btn-admin" onclick="setRole('admin')">🛡️ مشرف</button>
     </div>
 
-    <div id="admin-badge" style="text-align:center; display:none;">
-      <span class="admin-badge">🔐 وضع المشرف</span>
-    </div>
+    <div class="admin-badge" id="admin-badge"><span>🔐 وضع المشرف  </span></div>
 
-    <form id="login-form" onsubmit="handleLogin(event)">
+    <div class="success-banner" id="success-banner">✓ تم تسجيل الدخول بنجاح! جارٍ التحويل…</div>
+
+    <form id="login-form" novalidate autocomplete="off">
+
       <div class="form-group">
-        <label for="username">اسم المستخدم أو البريد الإلكتروني</label>
-        <input type="text" id="username" placeholder="أدخل اسم المستخدم أو بريدك الإلكتروني" required />
+        <label for="identifier" id="identifier-label">اسم المستخدم أو البريد الإلكتروني</label>
+        <div class="input-wrap">
+          <input type="text" id="identifier" placeholder="sara_2026 أو example@domain.com" autocomplete="username"/>
+          <i class="status-icon" id="identifier-icon"></i>
+        </div>
+        <span class="field-msg" id="identifier-msg"></span>
       </div>
+
       <div class="form-group">
         <label for="password">كلمة المرور</label>
-        <input type="password" id="password" placeholder="••••••••" required />
+        <div class="input-wrap">
+          <input type="password" id="password" placeholder="••••••••" autocomplete="current-password"/>
+          <button type="button" class="toggle-pw" id="eye-pw" aria-label="إظهار كلمة المرور">👁</button>
+        </div>
+        <span class="field-msg" id="password-msg"></span>
         <div class="forgot"><a href="#">نسيت كلمة المرور؟</a></div>
       </div>
 
-      <button type="submit" class="btn-submit">دخول</button>
+      <button type="submit" class="btn-submit" id="sub-btn">دخول</button>
     </form>
 
     <div class="divider"><span>أو</span></div>
-
-    <div class="card-footer">
-      ليس لديك حساب؟ <a href="signup.html">أنشئ حساباً الآن</a>
-    </div>
+    <div class="card-footer">ليس لديك حساب؟ <a href="signup.html">أنشئ حساباً الآن</a></div>
   </div>
 </main>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-brand">
-                <img src="../Images/logo.png" alt="عينك"/>
-                <p>منصة مجتمعية للإبلاغ عن مخالفات المدن في المملكة العربية السعودية</p>
-            </div>
-            <div class="footer-links">
-                <h5>روابط</h5>
-                <a href="index.html">الرئيسية</a>
-                <a href="index.html#features">المميزات</a>
-                <a href="index.html#violations">المخالفات</a>
-                <a href="login.html">تسجيل الدخول</a>
-                <a href="signup.html">إنشاء حساب</a>
-            </div>
-            <div class="footer-links">
-                <h5>تواصل معنا</h5>
-                <span><i class="fa-solid fa-envelope"></i> support@aynek.sa</span>
-                <span><i class="fa-solid fa-location-dot"></i> المملكة العربية السعودية</span>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>جميع الحقوق محفوظة &copy; 2025 — عينك</p>
-        </div>
-    </footer>
-
+<footer>&copy; 2026 عينك — جامعة الملك سعود · IT 320</footer>
+//all in javascript since both pages share the same validation logic and we want to keep them consistent without duplication and since there is no database in this phase so i didnt use php
 <script>
-  let currentRole = 'user';
+let currentRole = 'user';
 
-  function setRole(role, btn) {
-    currentRole = role;
-    document.querySelectorAll('.role-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('admin-badge').style.display = role === 'admin' ? 'block' : 'none';
-  }
+function setRole(role) {
+  currentRole = role;
+  document.getElementById('btn-user').classList.toggle('active',  role === 'user');
+  document.getElementById('btn-admin').classList.toggle('active', role === 'admin');
+  document.getElementById('admin-badge').style.display = role === 'admin' ? 'block' : 'none';
+  document.getElementById('identifier-label').textContent =
+    role === 'admin' ? 'معرّف المشرف أو البريد الإلكتروني' : 'اسم المستخدم أو البريد الإلكتروني';
+  document.getElementById('login-alert').style.display = 'none';
+  clearFields();
+}
 
-  function handleLogin(e) {
-    e.preventDefault();
-    if (currentRole === 'admin') {
-      window.location.href = 'admin-dashboard.html';
-    } else {
-      window.location.href = 'my-reports.html';
-    }
-  }
-
-  document.getElementById('burger').addEventListener('click', function () {
-      document.getElementById('mobileNav').classList.toggle('open');
+function clearFields() {
+  ['identifier','password'].forEach(id => {
+    const el = document.getElementById(id);
+    el.classList.remove('valid','invalid');
+    document.getElementById(id+'-msg').textContent = '';
+    document.getElementById(id+'-msg').className = 'field-msg';
+    const ic = document.getElementById(id+'-icon');
+    if (ic) ic.classList.remove('show');
   });
+}
+
+function fieldState(id, state, msg) {
+  const inp = document.getElementById(id);
+  const m   = document.getElementById(id + '-msg');
+  const ic  = document.getElementById(id + '-icon');
+  inp.classList.remove('valid','invalid');
+  m.className = 'field-msg'; m.textContent = msg || '';
+  if (state === 'ok') {
+    inp.classList.add('valid'); m.classList.add('ok');
+    if (ic) { ic.textContent='✓'; ic.style.color='#1e8449'; ic.classList.add('show'); }
+  } else if (state === 'err') {
+    inp.classList.add('invalid'); m.classList.add('err');
+    if (ic) { ic.textContent='✗'; ic.style.color='#c0392b'; ic.classList.add('show'); }
+  } else {
+    if (ic) ic.classList.remove('show');
+  }
+}
+
+/* toggle password */
+document.getElementById('eye-pw').addEventListener('click', () => {
+  const inp = document.getElementById('password');
+  const btn = document.getElementById('eye-pw');
+  inp.type = inp.type === 'password' ? 'text' : 'password';
+  btn.textContent = inp.type === 'password' ? '👁' : '🙈';
+});
+
+/* validators */
+function vIdentifier() {
+  const v = document.getElementById('identifier').value.trim();
+  if (!v) {
+    fieldState('identifier','err', currentRole === 'admin' ? 'معرّف المشرف مطلوب' : 'اسم المستخدم أو البريد الإلكتروني مطلوب');
+    return false;
+  }
+  if (v.length < 3) { fieldState('identifier','err','يجب أن يكون 3 أحرف على الأقل'); return false; }
+  fieldState('identifier','ok',''); return true;
+}
+
+function vPassword() {
+  const v = document.getElementById('password').value;
+  if (!v) { fieldState('password','err','كلمة المرور مطلوبة'); return false; }
+  if (v.length < 8) { fieldState('password','err',`كلمة المرور قصيرة جداً (${v.length}/8 أحرف كحد أدنى)`); return false; }
+  fieldState('password','ok',''); return true;
+}
+
+/* live */
+document.getElementById('identifier').addEventListener('blur',  vIdentifier);
+document.getElementById('identifier').addEventListener('input', () => { if (document.getElementById('identifier').classList.contains('invalid')) vIdentifier(); });
+document.getElementById('password').addEventListener('blur',  vPassword);
+document.getElementById('password').addEventListener('input', () => { if (document.getElementById('password').classList.contains('invalid')) vPassword(); });
+
+/* submit */
+document.getElementById('login-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const ok1 = vIdentifier();
+  const ok2 = vPassword();
+  if (!ok1 || !ok2) return;
+
+  const btn = document.getElementById('sub-btn');
+  btn.disabled = true; btn.textContent = 'جارٍ التحقق…';
+
+  /* ── Accept any credentials NOTE this is just because there is no database , redirect by role ── */
+  setTimeout(() => {
+    document.getElementById('success-banner').style.display = 'block';
+    setTimeout(() => {
+      window.location.href = currentRole === 'admin'
+        ? '../Pages/admin-dashboard.html'
+        : '../Pages/my-reports.html';
+    }, 1500);
+  }, 700);
+});
 </script>
 </body>
 </html>
