@@ -22,13 +22,14 @@ Users can submit reports with descriptions, images, and locations, while admins 
 * HTML
 * CSS
 * JavaScript
-* (Future) Database integration
+* PHP
+*  Database integration
 
 ---
 
 ## 🗂️ Project Structure
 
-* `Pages/` → HTML pages (home, login, signup)
+* `Pages/` → HTML and PHP pages (home, login, signup)
 * `CSS/` → stylesheets
 * `Images/` → project images and logo
 * `JavaScript/` → scripts
@@ -38,7 +39,7 @@ Users can submit reports with descriptions, images, and locations, while admins 
 ## 🚀 How to Run
 
 1. Open the project folder
-2. Open `index.html` in your browser
+2. Open `index.php` in your browser
 3. Navigate through the pages
 
 ---
