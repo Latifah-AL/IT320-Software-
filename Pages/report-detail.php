@@ -75,14 +75,14 @@ $timeStr = $report['SubmittedAt'];
 
         <nav class="navbar">
             <div class="nav-inner">
-                <a href="index.html" class="logo">
+                <a href="index.php" class="logo">
                     <img src="../Images/logo.png" alt="عينك"/>
                 </a>
                 <ul class="nav-links">
-                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="index.php">الرئيسية</a></li>
                     <li><a href="create-report.php">إضافة بلاغ</a></li>
                     <li><a href="my-reports.php" class="active">بلاغاتي</a></li>
-                    <li><a href="map.html">الخريطة</a></li>
+                    <li><a href="map.php">الخريطة</a></li>
                 </ul>
                 <div class="nav-user">
                     <a href="profile.php" class="nav-username">
@@ -98,10 +98,10 @@ $timeStr = $report['SubmittedAt'];
                 </button>
             </div>
             <div class="mobile-nav" id="mobileNav">
-                <a href="index.html">الرئيسية</a>
+                <a href="index.php">الرئيسية</a>
                 <a href="create-report.php">إضافة بلاغ</a>
                 <a href="my-reports.php">بلاغاتي</a>
-                <a href="map.html">الخريطة</a>
+                <a href="map.php">الخريطة</a>
                 <a href="../auth/logout.php" class="btn-logout-mobile">خروج</a>
             </div>
         </nav>
@@ -238,10 +238,10 @@ $timeStr = $report['SubmittedAt'];
                 </div>
                 <div class="footer-links">
                     <h5>روابط</h5>
-                    <a href="index.html">الرئيسية</a>
+                    <a href="index.php">الرئيسية</a>
                     <a href="create-report.php">إضافة بلاغ</a>
                     <a href="my-reports.php">بلاغاتي</a>
-                    <a href="map.html">الخريطة</a>
+                    <a href="map.php">الخريطة</a>
                 </div>
                 <div class="footer-links">
                     <h5>تواصل معنا</h5>
